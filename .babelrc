@@ -1,0 +1,16 @@
+{
+    "presets": [
+        "@babel/preset-env", //compiling ES2015+ syntax
+        "@babel/preset-react" //for react
+    ],
+    "plugins": [
+        "@babel/plugin-transform-runtime",
+        "@babel/plugin-proposal-class-properties",
+        [
+          "@babel/plugin-transform-react-jsx",
+          {
+            "runtime": "automatic"
+          }
+        ]
+      ]
+    }

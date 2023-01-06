@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Home from './components/Home'
+import './styles/custom.scss';
+import Layout from "./components/Layout";
+import Welcome from "./components/Welcome"
+import DashLayout from "./components/DashLayout";
+import { Helmet } from 'react-helmet-async';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    useParams,
+    useRouteMatch
+  } from "react-router-dom";
+import { Container } from "react-bootstrap";
+
+const App = () => {
+
+    return  (
+        <>
+            <Helmet>
+                <title>Sow Awesome | Farmer's Planting Guide</title>
+                <meta name="description" content="Sow Awesome - An Application to Help Small Farms Grow" />
+                <meta name="keywords" content="Farming, Planting, Schedule, Harvest, Pesticide, Cover crop, Maturity, Tracker" />
+            </Helmet>
+            <Routes>
+            <Route path="/" element={<Layout />} />
+                <Route index element={<Home />} />
+                <Route path="home" element={<Home />} />
+            <Route path="/dash" element={<DashLayout />} />
+                <Route index element={<Welcome />} />
+                <Route path="home" element={<Home />} />
+            </Routes>
+        {/* <Footer /> */}
+        </>
+    )
+}
+
+function Picker() {
+    let { id } = useParams();
+    let Id = id.toLowerCase()
+    .split(' ')
+    .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+    .join(' ');
+
+    return (
+            <Portfolio id={Id} />
+    )
 }
 
 export default App;

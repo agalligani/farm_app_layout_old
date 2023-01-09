@@ -1,12 +1,14 @@
 const path = require("path");
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 
 module.exports={
     /** "mode"
      * the environment - development, production, none. tells webpack 
      * to use its built-in optimizations accordingly. default is production 
      */
-    mode: "development", 
-    entry: "./index.js",
+    mode: "production", 
+    entry: "./src/index.js",
     output: {
         path: path.resolve(__dirname, "public"),
         filename: "main.js",
@@ -19,7 +21,7 @@ module.exports={
     target: "web",
     devtool: "inline-source-map",
     devServer: {
-        port: "9500",
+        port: "8500",
         static: ["./public"],
         open: true,
         hot: true,
@@ -30,6 +32,22 @@ module.exports={
     resolve: {
         extensions: ['.js','.jsx','.json'] 
     },
+    performance: {
+        hints: false,
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000
+    },
+    /** "webpack-bundle-analyzer" plugin
+     */
+    plugins: [
+        new BundleAnalyzerPlugin(
+            {
+                analyzerMode: "server",
+                analyzerHost: "127.0.0.1",
+                analyzerPort: 8880,
+            }
+        )
+      ],
     module:{
         rules: [
             {

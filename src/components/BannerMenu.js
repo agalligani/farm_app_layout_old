@@ -1,4 +1,4 @@
-import MainLink from './MainLink'
+import MainLinks from './MainLinks/Mainlinks'
 
 const BannerMenu = () => {
   return (
@@ -9,9 +9,7 @@ const BannerMenu = () => {
                 <div className="banner__inner_zone">
                     <div className="">
                         <nav aria-label="Primary" role="navigation" className="primary__nav">
-                            <MainLink />
-                            <MainLink />
-                            <MainLink />
+                            <MainLinks />
                         </nav>
                     </div>
                 </div>

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const apiSlice = createApi({
